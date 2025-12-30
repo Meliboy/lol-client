@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from 'react';
+import championsData from '@/data/champions.json';
 
 // Define the shape of data we expect from the Riot API
 // Note: This is now a single champion mastery object
@@ -51,6 +52,11 @@ export default function ChampMastery() {
       });
   }, []); // Empty array means this only runs once when component mounts
 
+  // Helper function to find champion info by ID
+  const getChampionById = (championId: number) => {
+    return championsData.champions.find(champ => champ.id === championId);
+  };
+
   // Show loading state while fetching
   if (loading) {
     return <div>loading champion mastery data...</div>;
@@ -69,34 +75,60 @@ export default function ChampMastery() {
   // Render the champion mastery information
   return (
     <div style={{ padding: '20px', border: '1px solid #ccc', borderRadius: '8px' }}>
-      <h3>Top 3 hampion Masteries</h3>
+      <h3>Top 5 Champion Masteries</h3>
       
       {/* Loop through each champion and display their info */}
-      {data.map((champ, index) => (
-        <div 
-          key={champ.championId} 
-          style={{ 
-            marginBottom: '16px', 
-            padding: '12px', 
-            backgroundColor: '#3b1515ff',
-            borderRadius: '4px'
-          }}
-        >
-          <h4>Champion #{index + 1}</h4>
-          
-          <div style={{ marginBottom: '4px' }}>
-            <strong>Champion ID:</strong> {champ.championId}
+      {data.map((champ, index) => {
+        // Find the champion details from our JSON data
+        const championInfo = getChampionById(champ.championId);
+        
+        return (
+          <div 
+            key={champ.championId} 
+            style={{ 
+              marginBottom: '16px', 
+              padding: '12px', 
+              backgroundColor: '#3b1515ff',
+              borderRadius: '8px',
+              display: 'flex',
+              gap: '16px',
+              alignItems: 'center'
+            }}
+          >
+            {/* Display champion splash art */}
+            {championInfo && (
+              <img 
+                src={championInfo.splashArt} 
+                alt={championInfo.name}
+                style={{
+                  width: '100px',
+                  height: '100px',
+                  objectFit: 'cover',
+                  borderRadius: '8px'
+                }}
+              />
+            )}
+            
+            <div style={{ flex: 1 }}>
+              <h4 style={{ marginTop: 0, marginBottom: '8px' }}>
+                #{index + 1} - {championInfo?.name || 'Unknown Champion'}
+              </h4>
+              
+              <div style={{ marginBottom: '4px' }}>
+                <strong>Champion ID:</strong> {champ.championId}
+              </div>
+              
+              <div style={{ marginBottom: '4px' }}>
+                <strong>Mastery Level:</strong> {champ.championLevel}
+              </div>
+              
+              <div style={{ marginBottom: '4px' }}>
+                <strong>Mastery Points:</strong> {champ.championPoints.toLocaleString()}
+              </div>
+            </div>
           </div>
-          
-          <div style={{ marginBottom: '4px' }}>
-            <strong>Mastery Level:</strong> {champ.championLevel}
-          </div>
-          
-          <div style={{ marginBottom: '4px' }}>
-            <strong>Mastery Points:</strong> {champ.championPoints.toLocaleString()}
-          </div>
-        </div>
-      ))}
+        );
+      })}
     </div>
   );
 }
