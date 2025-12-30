@@ -3,83 +3,69 @@
 import { useEffect, useState } from 'react';
 import championsData from '@/data/champions.json';
 
-// Define the shape of data we expect from the Riot API
-// Note: This is now a single champion mastery object
 type SummonerChampMasteryResponse = {
   championId: number;
   championLevel: number;
   championPoints: number;
 };
 
-export default function ChampMastery() {
-  // State to store an ARRAY of champion masteries
+export default function ChampMastery(Props: {puuid: string}) {
   const [data, setData] = useState<SummonerChampMasteryResponse[] | null>(null);
-  
-  // State to track if we're currently loading
   const [loading, setLoading] = useState(true);
-  
-  // State to store any error messages
   const [error, setError] = useState<string | null>(null);
 
-  // useEffect runs once when the component mounts
   useEffect(() => {
+    const endpoint = `/api/summoner/league/${Props.puuid}`;
 
-    // Build the endpoint URL
-    const endpoint = `/api/summoner/league/`;
-
-    // Fetch data from our API route
     fetch(endpoint)
       .then(async (res) => {
-        // Parse the JSON response
         const json = await res.json();
         
-        // If the response wasn't successful, throw an error
         if (!res.ok) {
-          throw new Error(json.error || `HTTP error! status: ${res.status}`);
+          // Better error message extraction
+          const errorMsg = typeof json.error === 'string' 
+            ? json.error 
+            : JSON.stringify(json.error) || json.message || `HTTP error! status: ${res.status}`;
+          
+          console.error('API Error Response:', json); // Log the full error object
+          throw new Error(errorMsg);
         }
         
         return json;
       })
       .then((json) => { 
-        // Store the data and stop loading
         setData(json); 
         setLoading(false); 
       })
       .catch((err) => { 
-        // Store the error message and stop loading
-        setError(err.message); 
+        const errorMessage = err instanceof Error ? err.message : 'An unknown error occurred';
+        console.error('ChampMastery fetch error:', err);
+        setError(errorMessage); 
         setLoading(false); 
       });
-  }, []); // Empty array means this only runs once when component mounts
+  }, [Props.puuid]);
 
-  // Helper function to find champion info by ID
   const getChampionById = (championId: number) => {
     return championsData.champions.find(champ => champ.id === championId);
   };
 
-  // Show loading state while fetching
   if (loading) {
     return <div>loading champion mastery data...</div>;
   }
   
-  // Show error state if something went wrong
   if (error) {
     return <div style={{ color: 'red' }}>Error: {error}</div>;
   }
   
-  // Show message if no data was returned
   if (!data || data.length === 0) {
     return <div>No champion mastery data found</div>;
   }
 
-  // Render the champion mastery information
   return (
     <div style={{ padding: '20px', border: '1px solid #ccc', borderRadius: '8px' }}>
       <h3>Top 5 Champion Masteries</h3>
       
-      {/* Loop through each champion and display their info */}
       {data.map((champ, index) => {
-        // Find the champion details from our JSON data
         const championInfo = getChampionById(champ.championId);
         
         return (
@@ -95,7 +81,6 @@ export default function ChampMastery() {
               alignItems: 'center'
             }}
           >
-            {/* Display champion splash art */}
             {championInfo && (
               <img 
                 src={championInfo.splashArt} 

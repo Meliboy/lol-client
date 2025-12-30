@@ -6,8 +6,7 @@ export default function Home() {
   return (
 
     <>
-      <SummonerInfo/>
-      <ChampMastery/>
+      <SummonerInfo name="kevindaplug" tag="4821" />
     </>
   );
 }
