@@ -7,7 +7,7 @@ export async function GET(
   const apiKey = process.env.RIOT_API_KEY;
   const { puuid } = await params;
 
-  const url = `https://na1.api.riotgames.com/lol/champion-mastery/v4/champion-masteries/by-puuid/${puuid}/top?count=3&api_key=${apiKey}`;
+  const url = `https://na1.api.riotgames.com/lol/champion-mastery/v4/champion-masteries/by-puuid/${puuid}/top?count=10&api_key=${apiKey}`;
   
   try {
     const riotResponse = await fetch(url);

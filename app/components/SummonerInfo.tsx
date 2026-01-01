@@ -15,6 +15,8 @@ export default function SummonerInfo(Props: {name: string; tag: string}) {
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
+    if (!Props.name || !Props.tag) return;
+
     const name = Props.name;
     const tag = Props.tag;
     
@@ -63,19 +65,7 @@ export default function SummonerInfo(Props: {name: string; tag: string}) {
   return (
     <>
       <div style={{ padding: '20px', border: '1px solid #ccc', borderRadius: '8px' }}>
-        <h3>Summoner Information</h3>
-        
-        <div style={{ marginBottom: '8px' }}>
-          <strong>Game Name:</strong> {data.gameName}
-        </div>
-        
-        <div style={{ marginBottom: '8px' }}>
-          <strong>Tag Line:</strong> {data.tagLine}
-        </div>
-        
-        <div style={{ marginBottom: '8px' }}>
-          <strong>PUUID:</strong> {data.puuid}
-        </div>
+        <h3>Welcome, {data.gameName}!</h3>
       </div>
       <ChampMastery puuid={data.puuid} />
     </>
