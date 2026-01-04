@@ -4,16 +4,12 @@ import { useState } from "react";
 import SummonerInfo from "./components/SummonerInfo";
 
 export default function Home() {
-  // 1. Local state for the input field
   const [userInput, setUserInput] = useState("");
-  
-  // 2. State for the actual search terms (initialized with defaults)
   const [searchTerms, setSearchTerms] = useState({ name: "", tag: "" });
 
   const handleSearch = (e: React.FormEvent) => {
     e.preventDefault();
 
-    // Check if the user entered the correct format: Name#Tag
     if (userInput.includes("#")) {
       const [name, tag] = userInput.split("#");
       setSearchTerms({ 
@@ -26,41 +22,30 @@ export default function Home() {
   };
 
   return (
-    <main style={{ padding: "40px" }}>
-      <h1>Who are YOU Summoner?</h1>
+    <main className="p-10">
+      <h1 className="text-3xl font-bold mb-6">Who are YOU Summoner?</h1>
       
-      {/* 3. The Form */}
-      <form onSubmit={handleSearch} style={{ marginBottom: "20px" }}>
+      <form onSubmit={handleSearch} className="mb-5">
         <input
           type="text"
           placeholder="SummonerName#Tag"
           value={userInput}
           onChange={(e) => setUserInput(e.target.value)}
-          style={{
-            padding: "8px",
-            borderRadius: "4px",
-            border: "1px solid #ccc",
-            marginRight: "10px",
-            color: "white"
-          }}
+          className="px-3 py-2 rounded border border-gray-600 bg-gray-800 text-white mr-3 focus:outline-none focus:ring-2 focus:ring-blue-500"
         />
         <button 
           type="submit" 
-          style={{ padding: "8px 16px", cursor: "pointer",borderRadius: "4px",border: "1px solid #ccc",
-            marginRight: "10px",
-            color: "white" }}
+          className="px-4 py-2 rounded border border-gray-600 bg-gray-700 text-white hover:bg-gray-600 transition-colors cursor-pointer"
         >
           Search
         </button>
       </form>
 
-      <hr style={{ margin: "20px 0" }} />
+      <hr className="my-5 border-gray-700" />
 
-      {/* 4. Pass the state into your existing component */}
-      {/* Only render if name and tag are not empty */}
       {searchTerms.name && searchTerms.tag && (
         <SummonerInfo name={searchTerms.name} tag={searchTerms.tag} />
-    )}
+      )}
     </main>
   );
 }
