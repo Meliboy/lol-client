@@ -1,13 +1,15 @@
-# League of Legends Summoner Lookup 🎮
+# League of Legends Client Remake! 🎮
 
-A Next.js web application that allows you to search for League of Legends summoners and view their champion mastery statistics with beautiful splash art displays.
+A Next.js web application that allows you to search for League of Legends summoners and view their champion mastery statistics with pretty UI! My end goal is to recreate the LoL client using the following tech stack! Currently I have working API calls to fetch champion mastery data for a user, working on recreating the base page of the client. Below is an image of my inspiration!
+
+![LoL Client Inspo]("C:\Users\Melvi\OneDrive - The Ohio State University\Pictures\Screenshots\lol_client_inspo.png")
 
 ![League of Legends](https://img.shields.io/badge/League%20of%20Legends-Data-gold?style=for-the-badge)
-![Next.js](https://img.shields.io/badge/Next.js-15-black?style=for-the-badge&logo=next.js)
-![TypeScript](https://img.shields.io/badge/TypeScript-5.0-blue?style=for-the-badge&logo=typescript)
-![Tailwind CSS](https://img.shields.io/badge/Tailwind-3.0-38B2AC?style=for-the-badge&logo=tailwind-css)
+![Next.js]
+![TypeScript]
+![Tailwind CSS]
 
-## ✨ Features
+## ✨ Features so far :)
 
 ### 🔍 Summoner Search
 - Search for any League of Legends player using their **Riot ID** (Name#Tag format)
@@ -96,7 +98,7 @@ GET /lol/champion-mastery/v4/champion-masteries/by-puuid/{puuid}/top
 ```
 GET https://ddragon.leagueoflegends.com/cdn/{version}/data/en_US/champion.json
 ```
-- **Purpose**: Fetch static champion data (names, stats, images)
+- **Purpose**: Fetch static champion data (names, images)
 - **Returns**: Complete champion database with metadata
 - **Implementation**: Client-side fetch in `ChampMastery.tsx`
 
@@ -107,21 +109,6 @@ The project uses **Next.js API Routes** as a backend proxy to:
 - ✅ **Handle errors** - Centralized error handling and logging
 - ✅ **Type safety** - Full TypeScript interfaces for all responses
 - ✅ **Disable caching** - Always fetch fresh data for accurate stats
-
-**Key Features:**
-```typescript
-// Disable Next.js caching for real-time data
-export const dynamic = 'force-dynamic';
-export const revalidate = 0;
-
-// Proper error handling
-if (!riotResponse.ok) {
-  return NextResponse.json(
-    { error: data.status?.message || 'Failed to fetch data' },
-    { status: riotResponse.status }
-  );
-}
-```
 
 ## 🏗️ Project Structure
 
@@ -143,7 +130,7 @@ if (!riotResponse.ok) {
 
 ## 🛠️ Technologies Used
 
-- **[Next.js 15](https://nextjs.org/)** - React framework with App Router
+- **[Next.js](https://nextjs.org/)** - React framework with App Router
 - **[TypeScript](https://www.typescriptlang.org/)** - Type-safe JavaScript
 - **[Tailwind CSS](https://tailwindcss.com/)** - Utility-first CSS framework
 - **[Riot Games API](https://developer.riotgames.com/)** - Official League of Legends data
@@ -183,14 +170,14 @@ if (!riotResponse.ok) {
 
 ## 🎯 Future Enhancements
 
-- [ ] Add match history display
+- [ ] Complete Home Page for Client
 - [ ] Show ranked stats and LP (League Points)
-- [ ] Compare two summoners side-by-side
-- [ ] Add champion ability details
-- [ ] Implement search history
+- [ ] Add champion lists and champion ability details
+- [ ] Add customizable background images and icon for user (seperate from actual acc)
 - [ ] Add loading skeletons for better UX
 - [ ] Cache champion data in localStorage
-- [ ] Add lore page for champions
+- [ ] Implement pages such as match history, challenges, highlights
+- [ ] Create a resizable client for responsive design
 
 
 ## 📝 License
