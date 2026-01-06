@@ -2,7 +2,7 @@
 
 A Next.js web application that allows you to search for League of Legends summoners and view their champion mastery statistics with pretty UI! My end goal is to recreate the LoL client using the following tech stack: Next.js, TS, & TailwindCSS! Currently I am working on the necessary API calls to fetch champion mastery data for a user (as needed for home page), and working on recreating the base page of the client. Below is an image of my inspiration!
 
-![LoL Client Inspo]("https://github.com/user-attachments/assets/111385fd-4a41-4d73-9599-e2905a9fd096")
+<img width="2058" height="1163" alt="lol_client_inspo" src="https://github.com/user-attachments/assets/664b510d-a891-4de8-b406-802cb487dee8" />
 
 ## ✨ Features so far :)
 
