@@ -1,13 +1,8 @@
 # League of Legends Client Remake! 🎮
 
-A Next.js web application that allows you to search for League of Legends summoners and view their champion mastery statistics with pretty UI! My end goal is to recreate the LoL client using the following tech stack! Currently I have working API calls to fetch champion mastery data for a user, working on recreating the base page of the client. Below is an image of my inspiration!
+A Next.js web application that allows you to search for League of Legends summoners and view their champion mastery statistics with pretty UI! My end goal is to recreate the LoL client using the following tech stack: Next.js, TS, & TailwindCSS! Currently I am working on the necessary API calls to fetch champion mastery data for a user (as needed for home page), and working on recreating the base page of the client. Below is an image of my inspiration!
 
-![LoL Client Inspo]("C:\Users\Melvi\OneDrive - The Ohio State University\Pictures\Screenshots\lol_client_inspo.png")
-
-![League of Legends](https://img.shields.io/badge/League%20of%20Legends-Data-gold?style=for-the-badge)
-![Next.js]
-![TypeScript]
-![Tailwind CSS]
+![LoL Client Inspo]("https://github.com/user-attachments/assets/111385fd-4a41-4d73-9599-e2905a9fd096")
 
 ## ✨ Features so far :)
 
