@@ -1,51 +1,23 @@
 "use client";
 
-import { useState } from "react";
-import SummonerInfo from "./components/SummonerInfo";
+import Image from "next/image"
+import lolInspo from "../assets_art/lol_client_inspo.png"; //{../} allows us to out of the app directory
 
 export default function Home() {
-  const [userInput, setUserInput] = useState("");
-  const [searchTerms, setSearchTerms] = useState({ name: "", tag: "" });
-
-  const handleSearch = (e: React.FormEvent) => {
-    e.preventDefault();
-
-    if (userInput.includes("#")) {
-      const [name, tag] = userInput.split("#");
-      setSearchTerms({ 
-        name: name.trim(), 
-        tag: tag.trim() 
-      });
-    } else {
-      alert("Please enter your name in the format: Name#Tag");
-    }
-  };
-
   return (
-    <main className="p-10">
-      <h1 className="text-3xl font-bold mb-6">Who are YOU Summoner?</h1>
-      
-      <form onSubmit={handleSearch} className="mb-5">
-        <input
-          type="text"
-          placeholder="SummonerName#Tag"
-          value={userInput}
-          onChange={(e) => setUserInput(e.target.value)}
-          className="px-3 py-2 rounded border border-gray-600 bg-gray-800 text-white mr-3 focus:outline-none focus:ring-2 focus:ring-blue-500"
+    <main className="p-8">
+      <h1 className="text-2xl font-bold mb-4">Welcome to the LoL Client</h1>
+      <h2> My name is Melvin and I am THE developer working on this project. I am currently recreating the LoL client using Next.js and TypeScript. Thank you for visiting my project website!</h2>
+      <h2>To get started, please enter your summoner name and tag in the search bar and happy exploring! (many pages are a WIP lol :))</h2>
+      <h2>Below is an image of the current LoL client that I am recreating:
+      <br></br>
+      <br></br>    
+      <Image src={lolInspo}
+               alt="LoL Client Inspiration"
+               width={1000}
+               //height={200} 
         />
-        <button 
-          type="submit" 
-          className="px-4 py-2 rounded border border-gray-600 bg-gray-700 text-white hover:bg-gray-600 transition-colors cursor-pointer"
-        >
-          Search
-        </button>
-      </form>
-
-      <hr className="my-5 border-gray-700" />
-
-      {searchTerms.name && searchTerms.tag && (
-        <SummonerInfo name={searchTerms.name} tag={searchTerms.tag} />
-      )}
-    </main>
-  );
+      </h2>
+      </main>
+  );  
 }
