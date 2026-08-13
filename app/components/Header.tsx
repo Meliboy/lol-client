@@ -24,29 +24,26 @@ function Header() {
 
   return (
     // Spans 100% width, positioned absolutely at top left with z-20 overlay
-    <header className="absolute top-0 left-0 w-full bg-gradient-to-b from-black/95 via-black/60 to-transparent p-4 z-20 backdrop-blur-[2px]">
-      <h1 className="text-xl font-bold text-yellow-400 drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)]">
-        Mel's Journey!
-      </h1>
+    <header className="absolute top-0 left-0 w-full p-4 z-20">
       <nav className="flex flex-row justify-between items-center mt-2">
-        <ul className="flex flex-row items-center gap-6 text-gray-300 font-medium drop-shadow">
-          <li className="hover:text-white transition-colors">
+        <ul className="flex flex-row items-center gap-6 text-gray-300 font-medium">
+          <li className="hover:text-white transition-colors text-[#bfbf99]">
             <Link href="/">About Me</Link>
           </li>
-          <li className="hover:text-white transition-colors">
+          <li className="hover:text-white transition-colors text-[#bfbf99]">
             <Link href="/skills">Skills</Link>
           </li>
-          <li className="hover:text-white transition-colors">
+          <li className="hover:text-white transition-colors text-[#bfbf99]">
             <Link href="/projects">Projects</Link>
           </li>
-          <li className="hover:text-white transition-colors">
+          <li className="hover:text-white transition-colors text-[#bfbf99]">
             <Link href="/experience">Experience</Link>
           </li>
-          <li className="hover:text-white transition-colors">
+          <li className="hover:text-white transition-colors text-[#bfbf99]">
             <Link href="/media">Media & Demos</Link>
           </li>
         </ul>
-        <form onSubmit={handleSearch} className="flex gap-2">
+        {/* <form onSubmit={handleSearch} className="flex gap-2">
           <input
             type="text"
             placeholder="SummonerName#Tag"
@@ -60,7 +57,7 @@ function Header() {
           >
             Search
           </button>
-        </form>
+        </form> */}
       </nav>
     </header>
   );

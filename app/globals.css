@@ -1,5 +1,14 @@
 @import "tailwindcss";
 
+/* 1. Correctly define the font face from public directory */
+@font-face {
+  font-family: 'Friz Quadrata';
+  src: url('/fonts/friz.woff2') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
 :root {
   --background: #0a0a0a;
   --foreground: #ededed;
@@ -8,18 +17,16 @@
 body {
   background-color: var(--background);
   color: var(--foreground);
-  font-family: var(--font-geist-sans), Arial, Helvetica, sans-serif;
+  font-family: 'Friz Quadrata', serif;
   min-height: 100vh;
 }
 
-/* Background image with built-in 70% dark overlay layer */
+/* Background image with built-in 75% dark overlay layer */
 body::before {
   content: '';
   position: fixed;
-  inset: 0; /* Cover entire screen */
-  background-image: 
-    linear-gradient(rgba(10, 10, 10, 0.75), rgba(10, 10, 10, 0.75)), 
-    url('https://i.redd.it/vyi36bf6bzue1.jpeg');
+  inset: 0;
+  background-image: linear-gradient(rgba(10, 10, 10, 0.75), rgba(10, 10, 10, 0.75)), url('https://i.redd.it/vyi36bf6bzue1.jpeg');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
