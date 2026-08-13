@@ -6,9 +6,8 @@ import ProfileBanner from "./components/ProfileBanner";
 export default function Home() {
   return (
     <>
-      <div className="grid grid-cols-6 w-full h-[calc(100vh-111px)]">
-          <ProfileBanner />
-        <div className="col-span-5">
+
+        <div className="mx-auto">
           <h1 className="text-2xl font-bold mb-4">Welcome to the LoL Client</h1>
           
           <h2> My name is Melvin and I am THE developer working on this project. I am currently recreating the LoL client using Next.js and TypeScript. Thank you for visiting my project website!</h2>
@@ -19,10 +18,9 @@ export default function Home() {
           <Image src={lolInspo}
                   alt="LoL Client Inspiration"
                   width={1000}
-                  //height={200} 
+                  height={200} 
             />
           </h2>
-        </div>
       </div>
     </>
       
