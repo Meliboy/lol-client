@@ -27,12 +27,12 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} h-screen w-screen overflow-hidden relative text-white` }
+        className={`${geistSans.variable} ${geistMono.variable} h-screen w-screen overflow-hidden relative text-white`}
       >
-        <div 
+        <div
           className="pointer-events-none absolute inset-0 z-10 
                      bg-[radial-gradient(ellipse_at_top_left,_var(--tw-gradient-stops))] 
-                     from-black/80 via-black/40 to-transparent" 
+                     from-black/80 via-black/40 to-transparent"
         />
         {/* Full-width overlay Header sitting on top (z-20) */}
         <Header />
